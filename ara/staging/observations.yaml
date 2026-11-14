@@ -1,0 +1,8 @@
+observations:
+  - id: O01
+    timestamp: "2026-11-14T14:30"
+    provenance: ai-executed
+    content: "Windows git clone causes CRLF conversion on CSV files, leading to SHA256 mismatches in verify_manifests."
+    context: "Initial environment setup & preflight check"
+    potential_type: heuristic
+    promoted: false

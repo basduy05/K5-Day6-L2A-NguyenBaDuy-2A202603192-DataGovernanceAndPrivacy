@@ -1,0 +1,27 @@
+tree:
+  - id: N01
+    type: question
+    title: "How to reliably triage raw automotive images for blur, glare, dark, and compression defects under strict offline and human-in-the-loop constraints?"
+    provenance: user
+    timestamp: "2026-11-14T14:30"
+    description: >
+      Automotive perception models fail when trained on corrupted raw frames. A 5-step offline pipeline must triage top-B defect candidates for human review.
+    children:
+      - id: N02
+        type: dead_end
+        title: "Single global Laplacian variance threshold"
+        provenance: ai-executed
+        timestamp: "2026-11-14T14:30"
+        hypothesis: "A single Laplacian threshold can detect blurred or unsharp images."
+        failure_mode: "Night scenes have inherently low variance, triggering massive false alarms; localized glare and camera differences (cam_B) are ignored."
+        lesson: "Sharpness and brightness thresholds must be conditioned on camera optical profile and lighting metadata."
+      - id: N03
+        type: decision
+        title: "Conditional Multi-Defect Anomaly Scoring with Adaptive Z-score Normalization"
+        provenance: ai-suggested
+        timestamp: "2026-11-14T14:30"
+        choice: "Extract 4 orthogonal defect features (Laplacian, Exposure/Dark, Saturation/Glare, JPEG blockiness) and normalize per (camera_id, light) group."
+        alternatives:
+          - "Pretrained Deep Learning model (rejected: heavy, not self-contained offline, slow)"
+          - "Unconditioned global percentile filtering (rejected: biases night images)"
+        evidence: "Addresses failure modes of baseline while running under 5ms/image on CPU."
