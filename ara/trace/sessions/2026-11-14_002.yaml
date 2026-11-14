@@ -1,0 +1,43 @@
+session:
+  id: "2026-11-14_002"
+  timestamp: "2026-11-14T15:25"
+  summary: "Completed Track T02 pipeline implementation, human-in-the-loop review, pytest suite, and git demo freeze"
+
+events_logged:
+  - type: experiment
+    id: "E01"
+    provenance: user
+    summary: "Random baseline ran with status 0 in 0.24s"
+  - type: decision
+    id: "N04"
+    provenance: user
+    summary: "User reviewed top 6 images via contact sheet and exported review_queue_reviewed.csv"
+  - type: experiment
+    id: "E02"
+    provenance: user
+    summary: "PoC pipeline ran with status 0 in 0.62s; decision REWORK logged"
+  - type: experiment
+    id: "E03"
+    provenance: user
+    summary: "Pytest ran across test_cli.py and test_team_02.py with 0 failed"
+  - type: decision
+    id: "N05"
+    provenance: user
+    summary: "Locked git tag demo-180m at commit 83ce56d"
+
+ai_actions:
+  - action: "Guided user step-by-step through pipeline fixes, review loop, and pytest resolution"
+    provenance: ai-executed
+    files_changed: ["src/pipeline.py", "tests/test_cli.py", "tests/test_team_02.py"]
+
+claims_touched:
+  - id: C01
+    action: advanced
+    provenance: user
+  - id: C02
+    action: advanced
+    provenance: user
+
+open_threads:
+  - "Fill final sections in reports/group_report.md and reports/team_contributions.csv"
+  - "Tag final-24h for official submission"
